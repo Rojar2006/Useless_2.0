@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#AA000000"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/blockMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📵 Instagram is blocked!\nMove your phone to continue."
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>

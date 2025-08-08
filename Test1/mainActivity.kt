@@ -1,55 +1,31 @@
-package com.example.myapplication
+// In MainActivity.kt
+private lateinit var myReceiver: BroadcastReceiver
+private val intentFilter = IntentFilter("com.example.myapplication.MOTION_SENSOR_DATA")
 
-import android.app.AppOpsManager
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.Manifest
-import android.os.Bundle
-import android.provider.Settings
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // Request ACTIVITY_RECOGNITION permission for motion tracking
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACTIVITY_RECOGNITION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
-                100
-            )
-        }
-
-        val btnStart = findViewById<Button>(R.id.btnStart)
-
-        if (!hasUsageStatsPermission()) {
-            // Opens settings screen for Usage Access permission
-            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-        }
-
-        btnStart.setOnClickListener {
-            // Start MotionService as a foreground service
-            val intent = Intent(this, MotionService::class.java)
-            startForegroundService(intent)
+override fun onResume() {
+    super.onResume()
+    myReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            // Handle the broadcast
         }
     }
+    // Add the flag for API 33+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        registerReceiver(myReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED)
+    } else {
+        registerReceiver(myReceiver, intentFilter)
+    }
+}
 
-    private fun hasUsageStatsPermission(): Boolean {
-        val appOps = getSystemService(APP_OPS_SERVICE) as AppOpsManager
-        val mode = appOps.checkOpNoThrow(
-            AppOpsManager.OPSTR_GET_USAGE_STATS,
-            android.os.Process.myUid(),
-            packageName
-        )
-        return mode == AppOpsManager.MODE_ALLOWED
+override fun onPause() {
+    super.onPause()
+    // It's good practice to check if the receiver was actually registered
+    // though in this simple onResume/onPause pairing, it likely was.
+    // For more complex scenarios, you might add a flag.
+    try {
+        unregisterReceiver(myReceiver)
+    } catch (e: IllegalArgumentException) {
+        // Receiver was not registered or already unregistered.
+        Log.w("MainActivity", "Receiver not registered or already unregistered.")
     }
 }

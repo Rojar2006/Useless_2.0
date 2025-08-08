@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btnEnableService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable Accessibility Service" />
+
+    <Button
+        android:id="@+id/btnStartService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Motion Detection Service"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/measuredText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="No data yet"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:ellipsize="none"
+        android:lines="4" />
+
+
+</LinearLayout>

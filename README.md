@@ -48,10 +48,11 @@ For Software:
 
 # Screenshots (Add at least 3)
 ![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+*Interface of the app* ![WhatsApp Image 2025-08-09 at 04 49 31](https://github.com/user-attachments/assets/8fe8a903-7b31-4f05-a78b-e12e5c17564d)
 
 ![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+*Permission request to monitor apps* ![WhatsApp Image 2025-08-09 at 04 49 30](https://github.com/user-attachments/assets/a106b4dc-316d-4b67-ac94-cb974e12873f)
+
 
 ![Screenshot3](Add screenshot 3 here with proper name)
 *Add caption explaining what this shows*
@@ -71,11 +72,10 @@ For Hardware:
 
 # Build Photos
 ![Components](Add photo of your components here)
-*List out all components shown*![WhatsApp Image 2025-08-09 at 04 49 31](https://github.com/user-attachments/assets/8fe8a903-7b31-4f05-a78b-e12e5c17564d)
+*List out all components shown*
 
 
-![Build](Add photos of build process here)![WhatsApp Image 2025-08-09 at 04 49 30](https://github.com/user-attachments/assets/a106b4dc-316d-4b67-ac94-cb974e12873f)
-
+![Build](Add photos of build process here)
 *Explain the build steps*
 
 ![Final](Add photo of final product here)

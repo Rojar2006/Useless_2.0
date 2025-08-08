@@ -1,85 +1,51 @@
 package com.example.myapplication
 
-import android.app.Service
+import android.app.Activity
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.os.IBinder
-import android.util.Log
+import android.content.IntentFilter
+import android.os.Bundle
+import android.view.WindowManager
 
-class MovementService : Service(), SensorEventListener {
+class BlockScreenActivity : Activity() {
 
-    private lateinit var sensorManager: SensorManager
-    private var lastX = 0f
-    private var lastY = 0f
-    private var lastZ = 0f
-    private var firstRead = true
-
-    companion object {
-        var blockScreenShown: Boolean = false
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-
-        this.sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        val accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
-
-        Log.d("MovementService", "Service started")
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
-            val x = event.values[0]
-            val y = event.values[1]
-            val z = event.values[2]
-
-            if (firstRead) {
-                lastX = x
-                lastY = y
-                lastZ = z
-                firstRead = false
-                return
-            }
-
-            val dx = Math.abs(x - lastX)
-            val dy = Math.abs(y - lastY)
-            val dz = Math.abs(z - lastZ)
-
-            lastX = x
-            lastY = y
-            lastZ = z
-
-            // Detect large movement
-            if (dx > 3 || dy > 3 || dz > 3) {
-                Log.d("MovementService", "Movement detected!")
-
-                if (!blockScreenShown) {
-                    // Close the block screen if enough movement
-                    sendBroadcast(Intent("com.example.motionblocker.CLOSE_BLOCK_SCREEN"))
-
-                }
-            }
+    private val closeReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            finish()
         }
     }
 
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    fun showBlockScreen() {
-        val intent = Intent(this, BlockScreenActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-        blockScreenShown = true
+        // Keep the screen on and visible even on lock screen
+        window.addFlags(
+            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+        )
+
+        setContentView(R.layout.activity_block_screen)
     }
 
-    override fun onBind(intent: Intent?): IBinder? = null
+    override fun onStart() {
+        super.onStart()
+        registerReceiver(
+            closeReceiver,
+            IntentFilter("com.example.motionblocker.CLOSE_BLOCK_SCREEN"),
+            Context.RECEIVER_NOT_EXPORTED // Important for Android 13+
+        )
+        MovementService.blockScreenShown = true
+    }
 
-    override fun onDestroy() {
-        sensorManager.unregisterListener(this)
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(closeReceiver)
+        MovementService.blockScreenShown = false // mark overlay as inacti
+    }
+
+    override fun onBackPressed() {
+        // Disable back button
     }
 }

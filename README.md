@@ -20,7 +20,7 @@ When you attempt to open instagram on your android phone, this app prevents acce
 To prevent the phone being stationery while using Instagram
 
 ### The Solution (that nobody asked for)
-We used an app to monitor if the user opens instagram, if he/she does, they won't be able to access Instagram unless the phone is in contant motion.
+We used an app to monitor if the user opens instagram, if he/she does, they won't be able to access Instagram unless the phone is in constant motion.
 
 ## Technical Details
 ### Technologies/Components Used

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Motion Blocker</string>
+    <string name="accessibility_service_label">Blocks Instagram unless phone is moving</string>
+</resources>

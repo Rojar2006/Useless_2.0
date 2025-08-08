@@ -1,16 +1,19 @@
-package com.example.myapplication
+package your.package.name
 
-import android.app.Activity
-import android.os.Bundle
-import android.widget.TextView
+import android.accessibilityservice.AccessibilityService
+import android.view.accessibility.AccessibilityEvent
+import android.content.Intent
 
-class BlockActivity : Activity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tv = TextView(this)
-        tv.text = "Move your phone to access Instagram!"
-        tv.textSize = 24f
-        tv.setPadding(32, 64, 32, 64)
-        setContentView(tv)
+class AppBlockService : AccessibilityService() {
+    override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+        if (event?.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            val packageName = event.packageName?.toString() ?: return
+            if (packageName == "com.instagram.android") {
+                val i = Intent(this, ChallengeActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(i)
+            }
+        }
     }
+    override fun onInterrupt() {}
 }

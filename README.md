@@ -68,8 +68,9 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://drive.google.com/file/d/1ItqTYd-ow9YXWbECoOBjgDjq8gQ63tqg/view?usp=drivesdk
+
+This video showcases the basic app interface and initial working, unfortunately it couldn't be finished due to some issues with the code
 
 # Additional Demos
 [Add any extra demo materials/links]

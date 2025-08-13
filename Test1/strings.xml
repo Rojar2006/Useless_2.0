@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Motion Blocker</string>
-    <string name="accessibility_service_label">Blocks Instagram unless phone is moving</string>
+    <string name="app_name">My Application</string>
+    <string name="accessibility_service_description">
+    Blocks Instagram when you are not moving, to help reduce screen time.
+</string>
+
 </resources>

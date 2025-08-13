@@ -70,7 +70,11 @@ For Hardware:
 # Video
 https://drive.google.com/file/d/1ItqTYd-ow9YXWbECoOBjgDjq8gQ63tqg/view?usp=drivesdk
 
-This video showcases the basic app interface and initial working, unfortunately it couldn't be finished due to some issues with the code
+https://drive.google.com/file/d/1MkrlxaiUcaTIZv85OFvg3kfPUzKSwy0r/view?usp=drivesdk
+
+The first video showcases the basic app interface and initial working, unfortunately it couldn't be finished due to some issues with the code.
+
+The second video shows the current working model of the app, however instead of just Instagram it blocks all apps if movement is not detected.
 
 # Additional Demos
 [Add any extra demo materials/links]

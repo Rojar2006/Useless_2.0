@@ -13,35 +13,28 @@
 - Member 2: Rojar - Mar Athanasius College of engineering
 
 ### Project Description
-When you attempt to open instagram on your android phone, this app prevents access unless the phone is in contant motion.
+When you attempt to open instagram on your android phone, this app prevents access unless the phone is in contant motion. People have too much fun sitting with their phones and watching reels, but with this app they should start moving now to keep watching reels.
 
 
 ### The Problem (that doesn't exist)
-To prevent the phone being stationery while using Instagram
+To prevent the phone being stationery while using Instagram. 
 
 ### The Solution (that nobody asked for)
-We used an app to monitor if the user opens instagram, if he/she does, they won't be able to access Instagram unless the phone is in constant motion.
+We used an app to monitor if the user opens instagram, if he/she does, they won't be able to access Instagram unless the phone is in constant motion. 
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- Kotlin
-- [Frameworks used]
-- Android 
-- Android Studio
+- Kotlin (Language used to write the code, along with a bit of Java too)
+- Android (Modules used)
+- Android Studio (Software used to create and install the app)
 
 For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- Android Phone
 
 ### Implementation
 For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
+Installing is done with the help of Android Studio itself, no commands and no external downloads necessary. 
 
 ### Project Documentation
 For Software:
@@ -57,14 +50,8 @@ For Software:
 
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
 
 
-# Build Photos
-*
 
 ### Project Demo
 # Video
@@ -77,7 +64,6 @@ The first video showcases the basic app interface and initial working, unfortuna
 The second video shows the current working model of the app, however instead of just Instagram it blocks all apps if movement is not detected.
 
 # Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
 - Roshan Thankachan: Managed giving access to application running in the background

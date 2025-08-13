@@ -4,11 +4,6 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <Button
-        android:id="@+id/btnEnableService"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enable Accessibility Service" />
 
     <Button
         android:id="@+id/btnStartService"
